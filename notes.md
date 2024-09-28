@@ -104,3 +104,57 @@ export default function HeaderNav({ activeNav }: HeaderNavProps) {
 />
 ```
 
+
+# Module 2.1 Use of ShadCN Components
+## Using ShadCN
+1. Look for documentation of ShadCN
+> https://ui.shadcn.com/docs/components/accordion
+2. Select which components to use
+> in this case the button
+> in Using ShadCN Custom Components Require Pascal Case format
+3. Determine which element to change
+> we will be changing the button in header for login
+> ex.
+```ts
+// at the top layer codes
+import { Button } from "@/components/ui/button";
+
+// other code here
+
+// <a href="/login" className="rounded-full bg-green-200 px-5 py-2">Login</a>
+<a href="/login">
+  <Button>Login</Button>
+</a>
+```
+> You should add the import code
+
+### NOTE:
+- Sometimes you might see the import like this
+```ts
+import { Button } from "../ui/button";
+```
+- this is not good practice at it might cause some issues later on so it is best to change it in the format of
+```ts
+// the @ serves as calling to the src folder
+// the components is the folder where all components are resting
+// the ui is where ShadCN components are stored
+// button are the file we need
+import { Button } from "@/components/ui/button";
+```
+
+## Using ShadCN Variants / Other Tags
+if you will explore each pages of ShadCN components you will discover some variants of this components and you can use it as it fits to your design
+> ex.
+```ts
+<a href="/login">
+  <Button variant="outline">Login</Button>
+</a>
+```
+
+## Using ShadCN and Tailwind
+ShadCN also can use TailwindCodes by adding class
+```ts
+<a href="/login">
+  <Button className="bg-green-300">Login</Button>
+</a>
+```
