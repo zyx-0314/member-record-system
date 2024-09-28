@@ -28,7 +28,7 @@ There is 2 Types of Folder Naming in App:
   > (page)>login
 
 ## Creating New Page
-1. Create a Exportable Function
+1. Add an Exportable Function and Name the Function based on its page use
 ```ts
 export default function LoginPage() {
   return (
@@ -47,3 +47,60 @@ export default function LoginPage() {
 <a href="/login" className="rounded-full bg-green-200 px-5 py-2">Login</a>
 ```
 > Note: (page) are not included since it is grouping folder
+
+# Module 2: Components
+## Components
+1. Selecting what to make a component
+> What is reusable or what violates DRY?
+> ex.: Here we have header and nav
+2. Creating component in components folder and name it according to its component
+3. Add an Exportable Function and Name the Function based on its page use
+```ts
+export default function HeaderNav() {
+  return (
+    <>
+    </>
+  )
+};
+```
+4. Add the HTMl and Tailwind CSS Code between <> and </>
+5. Then change the code in the pages based on the exportable function
+> ex.: <HeaderNav/>
+
+## Passing Values
+1. Create a props data structure preparing to receive a values outside and above function
+> ex.
+```ts
+interface HeaderNavProps {
+  activeNav: string
+}
+```
+2. After the function name inside the () you can add parameters stating the data structure
+```ts
+export default function HeaderNav({ activeNav }: HeaderNavProps) {
+  return (
+    <>
+    </>
+  )
+};
+```
+3. Then you can add it as display or conditional in TS(JS) way
+```ts
+<a href="/about" className={`border-solid border-green-500 px-5 py-2 text-white ${activeNav === "About" ? "border-b-[5px]" : ""}`}>
+  About AITS
+</a>
+```
+4. Then Modify each instances it is declared
+```ts
+// If in home/landing page
+<HeaderNav 
+  activeNav={"Home"}
+/>
+```
+```ts
+// If in about page
+<HeaderNav 
+  activeNav={"About"}
+/>
+```
+

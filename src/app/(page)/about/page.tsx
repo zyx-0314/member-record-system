@@ -1,11 +1,10 @@
 import HeaderNav from "@/components/elements/header";
-import Image from "next/image";
 
-export default function LoginPage() {
+export default function AboutPage() {
   return (
     <main>
       <HeaderNav
-        activeNav={"Login"}
+        activeNav={"About"}
       />
     </main >
   );
