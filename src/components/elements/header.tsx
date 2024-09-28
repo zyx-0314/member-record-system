@@ -15,15 +15,15 @@ export default function HeaderNav({ activeNav }: HeaderNavProps) {
         </a>
         <div className="right flex gap-2">
           <nav className="flex gap-2 ">
-            <a href="/" className={`border-solid border-green-500 px-5 py-2 text-white ${activeNav === "Home" ? "border-b-[5px]" : ""}`}>
+            <a href="/" className={`border-solid border-b-[5px] px-5 py-2 text-white ${activeNav === "Home" ? "border-green-300" : "border-transparent"}`}>
               Home
             </a>
 
-            <a href="/news" className={`border-solid border-green-500 px-5 py-2 text-white ${activeNav === "News" ? "border-b-[5px]" : ""}`}>
+            <a href="/news" className={`border-solid border-b-[5px] px-5 py-2 text-white ${activeNav === "News" ? "border-green-300" : "border-transparent"}`}>
               News
             </a>
 
-            <a href="/about" className={`border-solid border-green-500 px-5 py-2 text-white ${activeNav === "About" ? "border-b-[5px]" : ""}`}>
+            <a href="/about" className={`border-solid border-b-[5px] px-5 py-2 text-white ${activeNav === "About" ? "border-green-300" : "border-transparent"}`}>
               About AITS
             </a>
 
