@@ -104,7 +104,6 @@ export default function HeaderNav({ activeNav }: HeaderNavProps) {
 />
 ```
 
-
 # Module 2.1 Use of ShadCN Components
 ## Using ShadCN
 1. Look for documentation of ShadCN
@@ -157,4 +156,57 @@ ShadCN also can use TailwindCodes by adding class
 <a href="/login">
   <Button className="bg-green-300">Login</Button>
 </a>
+```
+
+# Module 2.2 Creating Variants for Custom Components
+1. Same in creating components with variable
+```ts
+interface HeaderNavProps {
+  activeNav: string
+  status: string
+}
+
+export default function HeaderNav({ activeNav, status }: HeaderNavProps) {
+  return (
+    <>
+    </>
+  )
+};
+```
+
+2. The difference is that you need to create multiple functions connected to main function but has different codes or different returns
+---
+a. Multiple Functions
+```ts
+interface HeaderNavProps {
+  activeNav: string
+  status: "Active" | "Inactive" // This is called restricted input which controls only to input only this 2 choices. You can add longer variations but all is separated by |
+}
+
+export default function HeaderNav({ activeNav, status }: HeaderNavProps) {
+  switch(status) {
+    case "Active":
+      return ActiveNav();
+    case "Inactive":
+      return InactiveNav();
+    default:
+      return 
+  }
+};
+
+function ActiveNav() {
+  return (
+    <>
+    // Code here
+    </>
+  )
+};
+
+function InactiveNav() {
+  return (
+    <>
+    // Code here
+    </>
+  )
+};
 ```
