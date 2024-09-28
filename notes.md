@@ -16,3 +16,34 @@
 > Hero Section
 >
 > Footer Section
+
+# Module 1: Directories and Routing
+## Naming Folder
+There is 2 Types of Folder Naming in App:
+- For Grouping
+  - name is enclosed Parenthesis indicating that that is only used for dev or groupings of pages
+- For URI
+  - folder is named based on the URI that it will use:
+  > ex.: the login in URI: localhost:3000/login
+  > (page)>login
+
+## Creating New Page
+1. Create a Exportable Function
+```ts
+export default function LoginPage() {
+  return (
+    <main>
+
+    </main >
+  );
+}
+```
+2. Add HTML Code and Tailwind CSS Code
+
+## Routing to other Pages
+1. In the a element find href then add the / followed by the folder name in directory format
+> ex.: (page)>login
+```ts
+<a href="/login" className="rounded-full bg-green-200 px-5 py-2">Login</a>
+```
+> Note: (page) are not included since it is grouping folder
