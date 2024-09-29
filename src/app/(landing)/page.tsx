@@ -9,7 +9,7 @@ export default function Home() {
       />
 
       <section className="bg-slate-700 hero h-[85dvh] flex py-6 mx-32">
-        <aside className="left w-/12 flex flex-col gap-4 mx-4 my-16">
+        <aside className="left w-2/12 flex flex-col gap-4 mx-4 my-16">
           <div className="text-white border-b-white border-b cursor-pointer">AITS Assist: Midterm</div>
           <div className="text-white border-b-white border-b cursor-pointer">General Assembly</div>
         </aside>
