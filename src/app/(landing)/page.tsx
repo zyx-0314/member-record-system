@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 
-import Layout from '@/components/elements/layout';
 import DisplayPromotionSection from '@/components/section/displayPromotion';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { DisplayPromotionDS } from '@/schema/frontEndDataStructures';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import Layout from '@/components/elements/layout';
 
 export default function Home() {
   const [selectedEvent, setSelectedEvent] = useState<number>(0);

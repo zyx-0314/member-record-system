@@ -6,17 +6,18 @@ import HeaderNav from '@/components/elements/header';
 
 interface LayoutProps {
   children?: ReactNode
-  variant?: string
+  variant?: "subFolder" | undefined
+  crumbsList?: { href: string, title: string }[] | undefined
   activeNav: string
 }
 
-export default function Layout({ children, variant, activeNav }: LayoutProps) {
+export default function Layout({ children, variant, activeNav, crumbsList }: LayoutProps) {
   return (
     <>
       <HeaderNav
         activeNav={activeNav}
       />
-      <Section>
+      <Section variant={variant} crumbsList={crumbsList}>
         {children}
       </Section>
       <Footer></Footer>
