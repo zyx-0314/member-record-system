@@ -2,88 +2,97 @@
 
 import HeaderNav from "@/components/elements/header";
 import { Button } from "@/components/ui/button";
-import { useEffect, useReducer, useState } from "react";
+import { Input } from "@/components/ui/input";
+import { useReducer, useState } from "react";
 
-// useReducer
 interface ReducerProps {
-  type: 'SET_NAME' | 'SET_EMAIL' | 'SET_PASSWORD' | ''
+  type: string
   payload: string
 }
 
 export default function AboutPage() {
-  // useState
-  const [likeCount1, setLikeCount1] = useState<number>(0);
+  const [likeCount1, setLikeCount1] = useState(0);
   const [likeCount2, setLikeCount2] = useState<number>(0);
 
-  // useReducer
-  const requiredDataInitialState = {
-    name: '',
-    email: '',
-    password: ''
-  };
+  const userInformation = {
+    fName: "",
+    lName: "",
+    username: "",
+    password: "",
+  }
 
-  // useEffect
-  const [likeCount1Listener, setLikeCount1Listener] = useState<number>(0);
-
-  // useState
-  const AddCounter = () => {
-    setLikeCount1(likeCount1 + 1);
-  };
-
-  // useReducer
-  function SetDataOfReducer(state: any, action: ReducerProps) {
+  function SetUserInformation(state: any, action: ReducerProps) {
     switch (action.type) {
-      case 'SET_NAME':
-        return { ...state, name: action.payload };
-      case 'SET_EMAIL':
-        return { ...state, email: action.payload };
-      case 'SET_PASSWORD':
-        return { ...state, password: action.payload };
+      case "fName":
+        return { ...state, fName: action.payload }
+      case "lName":
+        return { ...state, lName: action.payload }
+      case "username":
+        return { ...state, username: action.payload }
+      case "password":
+        return { ...state, password: action.payload }
       default:
-        return state;
+        return state
     }
   };
 
-  // useReducer
-  const [state, dispatch] = useReducer(SetDataOfReducer, requiredDataInitialState);
+  const [state, dispatch] = useReducer(SetUserInformation, userInformation);
 
-  // useEffect
-  useEffect(() => {
-    setLikeCount1Listener(likeCount1Listener + 1);
-  }, [likeCount1]);
+  const IncrementLike = () => {
+    setLikeCount1(likeCount1 + 1);
+  };
+
+  const LikeHandler = (control: string) => {
+    if (control === "+") {
+      setLikeCount2(likeCount2 + 1);
+    } else {
+      setLikeCount2(likeCount2 - 1);
+    }
+  };
+
 
   return (
     <main>
       <HeaderNav
         activeNav={"About"}
       />
-      {/* This is used only for demo in Hooks */}
-      {/* useState */}
-      <Button onClick={AddCounter}>1. Like ({likeCount1})</Button>
-      <Button onClick={() => setLikeCount2(likeCount2 + 1)}>2. Like ({likeCount2})</Button>
-      {/* useEffect */}
-      <p>Like Count 1 Changes: {likeCount1Listener}</p>
+      <Button onClick={IncrementLike} variant={"secondary"} className="text-2xl">Like Up {likeCount1}</Button>
+      <div className="p-2 bg-red-300" onClick={() => setLikeCount1(likeCount1 - 1)}>Like Down {likeCount1}</div>
       <br />
-      {/* useReducer */}
-      <form className="flex flex-col gap-2">
-        <input className="bg-white"
-          value={state.name}
-          onChange={(e) => dispatch({ type: 'SET_NAME', payload: e.target.value })}
-        />
-        <input className="bg-white"
-          value={state.email}
-          onChange={(e) => dispatch({ type: 'SET_EMAIL', payload: e.target.value })}
-        />
-        <input className="bg-white"
-          value={state.password}
-          onChange={(e) => dispatch({ type: 'SET_PASSWORD', payload: e.target.value })}
-        />
-      </form>
-      <p>
-        Name: {state.name} <br />
-        Email: {state.email} <br />
-        Password: {state.password}
+      <Button onClick={() => LikeHandler("+")} variant={"ghost"} className="text-2xl">Like Up {likeCount2}</Button>
+      <Button onClick={() => LikeHandler("-")} variant={"destructive"} className="text-2xl">Like Down {likeCount2}</Button>
+      <br />
+      <br />
+      <p>First Name
+        <Input type="text" onChange={(e) => dispatch({
+          type: "fName",
+          payload: e.target.value
+        })}></Input>
       </p>
+      <p>Last Name
+        <Input type="text" onChange={(e) => dispatch({
+          type: "lName",
+          payload: e.target.value
+        })}></Input>
+      </p>
+      <p>Username
+        <Input type="text" onChange={(e) => dispatch({
+          type: "username",
+          payload: e.target.value
+        })}></Input>
+      </p>
+      <p>Password
+        <Input type="password" onChange={(e) => dispatch({
+          type: "password",
+          payload: e.target.value
+        })}></Input>
+      </p>
+
+      <p>First Name: {state.fName}</p>
+      <p>Last Name: {state.lName}</p>
+      <p>Username: {state.username}</p>
+      <p>Password: {state.password}</p>
+
     </main >
   );
 }
