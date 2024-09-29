@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 
-import HeaderNav from '@/components/elements/header';
+import Layout from '@/components/elements/layout';
 import DisplayPromotionSection from '@/components/section/displayPromotion';
-import { DisplayPromotionDS } from '@/schema/frontEndDataStructures';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { DisplayPromotionDS } from '@/schema/frontEndDataStructures';
 
 export default function Home() {
   const [selectedEvent, setSelectedEvent] = useState<number>(0);
@@ -52,33 +52,24 @@ export default function Home() {
   }, [selectedEvent]);
 
   return (
-    <main className="bg-slate-700">
-      <HeaderNav
-        activeNav={"Home"}
+    <Layout
+      activeNav={"Home"}
+    >
+      <aside className="left w-2/12 flex flex-col gap-4 mx-4 my-16">
+        <h3 className='font-semibold text-white text-center text-2xl'>Events & News</h3>
+        <ScrollArea>
+          {dummyData.map((data, id) => {
+            return (
+              <div key={id} onClick={() => HandleSelectedEvent(id)} className={`text-white border-b-4 my-4 mr-4 cursor-pointer ${id === selectedEvent ? "border-b-violet-300" : "border-b-white"}`}>{data.title}</div>
+            )
+          })}
+        </ScrollArea>
+      </aside>
+      <div className="border"></div>
+
+      <DisplayPromotionSection
+        {...dummyData[selectedEvent]}
       />
-
-      <section className="bg-slate-700 hero h-[85dvh] flex py-6 mx-32">
-        <aside className="left w-2/12 flex flex-col gap-4 mx-4 my-16">
-          <h3 className='font-semibold text-white text-center text-2xl'>Events & News</h3>
-          <ScrollArea>
-            {dummyData.map((data, id) => {
-              return (
-                <div key={id} onClick={() => HandleSelectedEvent(id)} className={`text-white border-b-4 my-4 mr-4 cursor-pointer ${id === selectedEvent ? "border-b-violet-300" : "border-b-white"}`}>{data.title}</div>
-              )
-            })}
-          </ScrollArea>
-        </aside>
-        <div className="border"></div>
-
-        <DisplayPromotionSection
-          {...dummyData[selectedEvent]}
-        />
-      </section>
-
-
-      <footer className="bg-slate-700 footer h-[5dvh] border-solid border-t-2 border-green-300 flex justify-center text-white items-center">
-        Record System
-      </footer>
-    </main >
+    </Layout>
   );
 }

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "@/provider/theme-provider";
+import './globals.css';
+
+import { Montserrat } from 'next/font/google';
+
+import { ThemeProvider } from '@/provider/theme-provider';
 
 const inter = Montserrat({ subsets: ["latin"] });
 
@@ -24,7 +26,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <main className="bg-slate-700">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>

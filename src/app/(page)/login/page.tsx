@@ -1,10 +1,9 @@
-import HeaderNav from "@/components/elements/header";
-import Image from "next/image";
+import Layout from '@/components/elements/layout';
 
 export default function LoginPage() {
   return (
     <main>
-      <HeaderNav
+      <Layout
         activeNav={"Login"}
       />
     </main >

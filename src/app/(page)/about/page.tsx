@@ -1,9 +1,7 @@
 "use client"
 
-import HeaderNav from "@/components/elements/header";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useReducer, useState } from "react";
+import Section from '@/components/elements/container';
+import Layout from '@/components/elements/layout';
 
 interface ReducerProps {
   type: string
@@ -14,12 +12,16 @@ export default function AboutPage() {
 
 
   return (
-    <main>
-      <HeaderNav
+    <main className="bg-slate-700">
+      <Layout
         activeNav={"About"}
-      />
+      >
 
+        <Section>
 
+        </Section>
+
+      </Layout>
     </main >
   );
 }

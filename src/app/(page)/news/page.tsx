@@ -1,9 +1,9 @@
-import HeaderNav from "@/components/elements/header";
+import Layout from '@/components/elements/layout';
 
 export default function NewsPage() {
   return (
     <main>
-      <HeaderNav
+      <Layout
         activeNav={"News"}
       />
     </main >
