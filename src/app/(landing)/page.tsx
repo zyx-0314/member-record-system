@@ -63,7 +63,7 @@ export default function Home() {
           <ScrollArea>
             {dummyData.map((data, id) => {
               return (
-                <div onClick={() => HandleSelectedEvent(id)} className={`text-white border-b-4 my-4 mr-4 cursor-pointer ${id === selectedEvent ? "border-b-violet-300" : "border-b-white"}`}>{data.title}</div>
+                <div key={id} onClick={() => HandleSelectedEvent(id)} className={`text-white border-b-4 my-4 mr-4 cursor-pointer ${id === selectedEvent ? "border-b-violet-300" : "border-b-white"}`}>{data.title}</div>
               )
             })}
           </ScrollArea>
